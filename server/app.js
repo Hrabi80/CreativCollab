@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -14,7 +14,7 @@ var app = express();
 const db = require('./config/keys').mongoURL;
 
 //db connection 
-mongoose.connect('mongodb://localhost/project_portail', {useNewUrlParser : true , useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/dhia', {useNewUrlParser : true , useUnifiedTopology: true })
   .then(()=> console.log('db connected '))
   .catch(()=> console.log('db not connected '));
 
