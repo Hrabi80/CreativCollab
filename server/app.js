@@ -1,33 +1,44 @@
-var createError = require('http-errors');
-var express = require('express');
-var dotenv = require('dotenv');
-var path = require('path');
-var connectdb = require('./config/db');
-var cookieParser = require('cookie-parser');
-var mongoose = require('mongoose');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const createError = require('http-errors');
+const express = require('express');
+const dotenv = require('dotenv');
+const path = require('path');
+const passport = require('passport');
+const session = require('express-session');
+const connectdb = require('./config/db');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const auth = require('./routes/auth');
 
-var app = express();
-
+const app = express();
 
 dotenv.config({ path: './config/config.env'});
-
 
 //db connection 
 connectdb();
 
 
-
-
+//passport config
+require('./config/passport')(passport);
 
 app.use(express.json());
-
 app.use(cookieParser());
 
+//session 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));  
+
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth',auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
