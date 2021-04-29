@@ -7,6 +7,8 @@ const session = require('express-session');
 const connectdb = require('./config/db');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const auth = require('./routes/auth');
@@ -29,7 +31,8 @@ app.use(cookieParser());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store : new MongoStore({mongooseConnection: mongoose.connection })
 }));  
 
 //passport middleware
