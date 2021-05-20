@@ -8,7 +8,11 @@ var UserSchema = new Schema({
     },
     role:{
         type:String,
+    },
+    about:{
+        type:String
     }
+
 });
 UserSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('User',UserSchema);
