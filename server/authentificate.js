@@ -48,3 +48,21 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
 
 //verify an income user and authenticate it based on token
 exports.verifyUser = passport.authenticate('jwt',{session: false});
+
+
+
+exports.verifyAdmin = function (req , res , next ) {
+    if (req.user.role =="admin") {
+        next();
+    } else {
+        res.status(400).send('invalide token');
+    }
+};
+
+exports.verify = function (req , res , next ) {
+    if (req.user.role =="admin") {
+        next();
+    } else {
+        res.status(400).send('invalide token');
+    }
+};
