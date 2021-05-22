@@ -12,8 +12,9 @@ const serviceRouter = express.Router();
 serviceRouter.use(bodyParser.json());
 
 
+
+
 router.get('/getUserById/:id',cors.corsWithOptions,(req,res,next)=>{
-//.options(cors.corsWithOptions, (req,res)=>{ res.sendStatus(200); })
   User.findById(req.params.id)
     .then((resp)=>{
       res.statusCode=200;
