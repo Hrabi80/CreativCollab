@@ -11,7 +11,23 @@ var UserSchema = new Schema({
     },
     about:{
         type:String
-    }
+    },
+    description:{
+        type:String
+    },
+    events: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'event'
+        }
+    ],
+    skills: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'skills'
+        }
+    ]
+
 
 });
 UserSchema.plugin(passportLocalMongoose);
