@@ -1,12 +1,11 @@
 const express = require('express');
 const eventRouter = express.Router();
-var authenticate  = require('../authenticate');
+var cors = require('./cors');
+var authenticate  = require('../authentificate');
 const Events = require('../models/events');
 const bodyParser = require('body-parser');
 
 eventRouter.use(bodyParser.json());
-
-
 
 eventRouter.route('/')
 .get((req,res,next) => {
@@ -18,7 +17,7 @@ eventRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.post(authenticate.verifyUser,(req, res, next) => {
+.post(cors.corsWithOptions,(req, res, next) => {
     Events.create(req.body)
     .then((event) => {
         console.log('event Created ', event);
@@ -85,12 +84,6 @@ eventRouter.route('/:eventId')
 
 
 /*-------------------------------------------------------------------------------------*/ 
-
-
-
-
-
-
 
 
 
@@ -247,4 +240,4 @@ eventRouter.route('/:eventId/users/:userId')
 
 
  
-module.exports = Router;
+module.exports = eventRouter;

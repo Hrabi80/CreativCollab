@@ -74,3 +74,4 @@ SkillsRouter.route('/:skillId')
     .catch((err) => next(err));
 });
 
+module.exports = SkillsRouter;

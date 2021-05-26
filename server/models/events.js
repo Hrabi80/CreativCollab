@@ -13,6 +13,10 @@ const event = mongoose.model('event',new mongoose.Schema({
         type: String,
         require: true,
     } , 
+    link : {
+        type: String,
+        require: true,
+    } ,
     Photo: {
         type: String,
         require: true,

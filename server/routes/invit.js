@@ -1,12 +1,10 @@
 const express = require('express');
 const invitRouter = express.Router();
-var authenticate  = require('../authenticate');
+var authenticate  = require('../authentificate');
 const invits = require('../models/invit');
 const bodyParser = require('body-parser');
 
 invitRouter.use(bodyParser.json());
-
-
 
 invitRouter.route('/')
 .get((req,res,next) => {
@@ -42,7 +40,7 @@ invitRouter.route('/')
     .catch((err) => next(err));    
 });
 
-eventRouter.route('/:eventId')
+invitRouter.route('/:eventId')
 .get((req,res,next) => {
     invits.findById(req.params.eventId)
     .then((event) => {
@@ -98,4 +96,4 @@ eventRouter.route('/:eventId')
 
 
  
-module.exports = Router;
+module.exports = invitRouter;
