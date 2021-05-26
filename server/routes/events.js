@@ -1,6 +1,6 @@
 const express = require('express');
 const eventRouter = express.Router();
-var authenticate  = require('../authenticate');
+var authenticate = require('../authentificate');
 const Events = require('../models/events');
 const bodyParser = require('body-parser');
 
@@ -247,4 +247,4 @@ eventRouter.route('/:eventId/users/:userId')
 
 
  
-module.exports = Router;
+module.exports = eventRouter;

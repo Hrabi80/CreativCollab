@@ -21,7 +21,15 @@ router.get('/getUsers',cors.corsWithOptions,(req,res,next)=>{
   .catch((err)=>next(err))
 });
 
-
+router.put('/updateUser/:id',cors.corsWithOptions,(req,res,next)=>{
+  User.findByIdAndUpdate(req.params.id,{$set: req.body},{new:true})
+  .then((cat)=>{
+      res.status.code=200;
+      res.setHeader('Content-Type','application/json');
+      res.json(cat);
+  },(err)=>next(err))
+  .catch((err)=>next(err));
+})
 
 router.get('/getUserById/:id',cors.corsWithOptions,(req,res,next)=>{
   User.findById(req.params.id)

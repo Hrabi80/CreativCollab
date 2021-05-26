@@ -15,6 +15,24 @@ var UserSchema = new Schema({
     description:{
         type:String
     },
+    linkedin:{
+        type:String
+    },
+    facebook:{
+        type: String
+    },
+    twitter:{
+        type:String,
+    },
+    tel:{
+        type:String,
+    },
+    place:{
+        type:String
+    },
+    avatar:{
+        type:String
+    },
     events: [
         {
             type: mongoose.Schema.Types.ObjectId,
