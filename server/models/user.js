@@ -44,6 +44,12 @@ var UserSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'skills'
         }
+    ],
+    skill:[
+        {
+            name:String,
+            icon:String
+        }
     ]
 
 
