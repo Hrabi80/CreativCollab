@@ -30,7 +30,22 @@ var UserSchema = new Schema({
     place:{
         type:String
     },
+    lieu:{
+        type:String
+    },
     avatar:{
+        type:String
+    },
+    domaine1:{
+        type:String
+    },
+    domaine2:{
+        type:String
+    },
+    domaine4:{
+        type:String
+    },
+    domaine3:{
         type:String
     },
     events: [

@@ -20,6 +20,16 @@ const event = mongoose.model('event',new mongoose.Schema({
     date: {
         type : Date, 
     },
+    hashtag: {
+        type : String, 
+    },
+    hashtag2: {
+        type : String, 
+    },
+    hashtag3: {
+        type : String, 
+    },
+    
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
